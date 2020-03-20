@@ -1,0 +1,14 @@
+# applies location and environment labels to cluster
+kind: Cluster
+apiVersion: clusterregistry.k8s.io/v1alpha1
+metadata:
+  name: belgium
+  labels:
+    location: belgium
+---
+kind: Cluster
+apiVersion: clusterregistry.k8s.io/v1alpha1
+metadata:
+  name: taiwan
+  labels:
+    location: taiwan
