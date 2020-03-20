@@ -6,7 +6,7 @@ export BASE_DIR=${BASE_DIR:="${PWD}/.."}
 echo "BASE_DIR set to $BASE_DIR"
 
 echo "### "
-echo "### Begin install config sync"
+echo "### Begin configuring ACM Operator"
 echo "### "
 
 ## Poll the Config Repository
