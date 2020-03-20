@@ -1,0 +1,48 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedzones
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedZones
+        listKind: K8sAllowedZonesList
+      validation:
+        # Schema for the `parameters` field
+        openAPIV3Schema:
+          properties:
+            zones:
+              type: array
+              items: 
+                type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8sallowedzones
+        
+        # VIOLATION: parameters.zone does not exists
+        violation[{"msg": msg}] {
+            not input.review.object.parameters["zones"]
+            msg  := sprintf("%s %s parameters.zones does not exist", 
+            [input.review.object.kind, input.review.object.metadata.name])
+        }
+        # VIOLATION: parameters.zone is []
+        violation[{"msg": msg}] {
+          zones := input.review.object.parameters.zones
+          
+          zones == []
+          msg  := sprintf("%s %s parameters.zones cannot be empty", 
+          [input.review.object.kind, input.review.object.metadata.name])
+        }
+        # VIOLATION: one or more more zone is not allowed
+        violation[{"msg": msg}] {
+          zones := cast_set(input.review.object.parameters.zones)
+          allowed_zones := cast_set(input.parameters.zones)
+          disallowed_zones := zones - allowed_zones
+          num := count(disallowed_zones)
+          not num == 0
+        msg := sprintf("%s %s has %v disallowed zones: %s, allowed zones are: %s",
+            [input.review.object.kind, input.review.object.metadata.name,
+              num, disallowed_zones, allowed_zones])
+        }
