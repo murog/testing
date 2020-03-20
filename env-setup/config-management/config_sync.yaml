@@ -5,6 +5,8 @@ metadata:
     namespace: config-management-system
 spec:
   clusterName: <CLUSTER_NAME>
+  policyController:
+    enabled: true
   git:
     syncRepo: <REPO_URL>
     syncBranch: <SYNC_BRANCH>
