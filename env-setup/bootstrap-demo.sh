@@ -11,8 +11,8 @@ if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then
     ./gke/provision-gke.sh &> ${WORK_DIR}/provision-gke.log
     wait
 
-    kubectx belgium && ./config-management/install-config-operator.sh && ./config-management/install-config-sync.sh
-    kubectx taiwan && ./config-management/install-config-operator.sh && ./config-management/install-config-sync.sh
+    kubectx belgium && ./config-management/install-config-operator.sh && ./config-management/install-config-sync.sh && ./config-management/install-policy-controller-sync.sh
+    kubectx taiwan && ./config-management/install-config-operator.sh && ./config-management/install-config-sync.sh && ./config-management/install-policy-controller-sync.sh
 
 else
     echo "This has only been tested in GCP Cloud Shell.  Only Linux (debian) is supported".
