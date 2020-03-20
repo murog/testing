@@ -2,6 +2,8 @@
 
 set -e
 
+source ./env
+
 if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then 
 
     ./common/install-tools.sh
