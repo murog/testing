@@ -10,5 +10,10 @@ echo "### Begin install config sync"
 echo "### "
 
 ## Poll the Config Repository
-(set -x; cat $BASE_DIR/config-management/config_sync.yaml | sed 's@<REPO_URL>@'${REPO_URL}@g | sed 's@<CLUSTER_NAME>@'${CLUSTER_NAME}@g | kubectl apply -f -)
+(set -x; cat $BASE_DIR/config-management/config_sync.yaml | 
+    sed 's@<REPO_URL>@'${REPO_URL}@g | 
+    sed 's@<CLUSTER_NAME>@'${CLUSTER_NAME}@g | 
+    sed 's@<SYNC_BRANCH>@'${SYNC_BRANCH}@g | 
+    sed 's@<POLICY_DIR>@'${POLICY_DIR}@g | 
+    kubectl apply -f -)
 
