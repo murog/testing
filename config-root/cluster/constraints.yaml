@@ -2,6 +2,8 @@ apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sAllowedZones
 metadata:
   name: belgium-locality
+  annotations:
+    configmanagement.gke.io/cluster-selector: select-location-belgium
 spec:
   match:
     kinds:
