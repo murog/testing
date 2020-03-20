@@ -7,7 +7,7 @@ spec:
   clusterName: <CLUSTER_NAME>
   git:
     syncRepo: <REPO_URL>
-    syncBranch: master
+    syncBranch: 1.0.0
     secretType: none
     policyDir: "."
     syncWait: 2
