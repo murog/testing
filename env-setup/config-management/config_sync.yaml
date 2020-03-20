@@ -7,9 +7,9 @@ spec:
   clusterName: <CLUSTER_NAME>
   git:
     syncRepo: <REPO_URL>
-    syncBranch: 1.0.0
+    syncBranch: <SYNC_BRANCH>
     secretType: none
-    policyDir: "foo-corp"
+    policyDir: <POLICY_DIR>
     syncWait: 2
   enableAggregateNamespaceQuotas: true
   enableHierarchicalResourceQuota: true
