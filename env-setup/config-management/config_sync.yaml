@@ -9,7 +9,7 @@ spec:
     syncRepo: <REPO_URL>
     syncBranch: 1.0.0
     secretType: none
-    policyDir: "."
+    policyDir: "foo-corp"
     syncWait: 2
   enableAggregateNamespaceQuotas: true
   enableHierarchicalResourceQuota: true

@@ -25,4 +25,4 @@
     export CLUSTER_KUBECONFIG_2=$WORK_DIR/$CLUSTER_NAME_2.context
 
 ## Setting variables for ACM
-    export REPO_URL="https://github.com/GoogleCloudPlatform/csp-config-management/foo-corp"
+    export REPO_URL="https://github.com/GoogleCloudPlatform/csp-config-management/"
